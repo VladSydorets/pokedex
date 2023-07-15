@@ -3,15 +3,20 @@
 import SearchInput from '@/components/SearchInput.vue'
 import FilterPokemon from '@/components/FilterPokemon.vue'
 import PokemonList from '@/components/PokemonList.vue'
+import SurprisePokemons from '@/components/SurprisePokemons.vue'
 // import pokemonData from '@/assets/pokemon.json'
 // import { ref } from 'vue'
 // import PokemonItem from './components/PokemonItem.vue'
 // const pokemons = ref(pokemonData)
+
+// TODO: Work on styles, remove comments, structure the code,
+// add return button from the pokemon page, remove navbar from the pokemon page
 </script>
 
 <template>
   <div class="bar">
     <SearchInput></SearchInput>
+    <SurprisePokemons></SurprisePokemons>
     <FilterPokemon></FilterPokemon>
   </div>
   <PokemonList></PokemonList>
@@ -47,7 +52,9 @@ import PokemonList from '@/components/PokemonList.vue'
 } */
 
 .bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  place-items: center;
 }
 </style>

@@ -27,7 +27,9 @@ onBeforeMount(() => {
       <div class="pokemon-id">#{{ pokemon.id }}</div>
       <h1 class="pokemon-name">{{ pokemon.name }}</h1>
       <ul class="pokemon-type">
-        <li v-for="pokemonType in pokemon.type" :key="pokemonType">{{ pokemonType }}</li>
+        <li class="basic-pill" v-for="pokemonType in pokemon.type" :key="pokemonType">
+          {{ pokemonType }}
+        </li>
       </ul>
       <p class="pokemon-desc">
         {{ pokemon.description }}
@@ -44,12 +46,11 @@ onBeforeMount(() => {
       <div class="pokemon-category pokemon-basics-item">
         Category<span>{{ pokemon.category }}</span>
       </div>
-      <!-- <div class="pokemon-weaknesses">123asdf</div> -->
     </div>
     <h2>Abilities</h2>
     <div class="pokemon-abilities">
       <div
-        class="pokemon-ability"
+        class="pokemon-ability basic-pill"
         v-for="pokemonAbility in pokemon.abilities"
         :key="pokemonAbility"
       >
@@ -59,7 +60,7 @@ onBeforeMount(() => {
     <h2>Weaknesses</h2>
     <div class="pokemon-weaknesses">
       <div
-        class="pokemon-weakness-item"
+        class="pokemon-weakness-item basic-pill"
         v-for="pokemonWeakness in pokemon.weaknesses"
         :key="pokemonWeakness"
       >
@@ -83,7 +84,7 @@ onBeforeMount(() => {
   <div class="pokemon-not-found" v-else>
     <img src="../assets/sad-pikachu.png" alt="not found image" width="500" />
     <div class="pokemon-not-found-text">
-      <p>Such Pokemon wasn't found :(</p>
+      <p>Such Pokémon wasn't found :(</p>
       <p>Try something else...</p>
     </div>
   </div>
@@ -102,7 +103,8 @@ onBeforeMount(() => {
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
 }
 
 h2 {
@@ -114,28 +116,30 @@ h2 {
 }
 
 .pokemon-image {
-  width: 50%;
+  width: 30%;
 }
 
 .pokemon-intro {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 .pokemon-desc {
   font-weight: 500;
   text-align: center;
   margin: 1rem 0;
-  max-width: 30rem;
+  max-width: 50rem;
+  font-size: 1.25rem;
 }
 .pokemon-name {
-  font-size: 3rem;
-  line-height: 3rem;
+  font-size: 4rem;
+  line-height: 4rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
   font-family: 'Tourney', cursive;
   font-weight: 200;
-  color: #ef3e36;
+  color: var(--vt-c-red);
 }
 
 .pokemon-type {
@@ -150,13 +154,6 @@ h2 {
 }
 .pokemon-ability {
   border: 1px solid black;
-  border-radius: 0.5rem;
-  padding: 0.15rem 0.5rem;
-  text-align: center;
-}
-
-.pokemon-stats div {
-  font-weight: 400;
 }
 
 .pokemon-basics {
@@ -174,11 +171,8 @@ h2 {
   gap: 0.25rem;
 }
 .pokemon-type li {
-  background-color: #ef3e36;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.5rem;
+  background-color: var(--vt-c-red);
   color: white;
-  cursor: pointer;
 }
 .pokemon-stats {
   display: flex;
@@ -187,28 +181,61 @@ h2 {
 .pokemon-stats-item {
   padding: 1rem 0.35rem;
   text-align: center;
-  background-color: #f898f8;
+  background-color: #c2dfe3;
   border: 1px solid black;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  transition: all 0.3s ease-in-out;
+}
+.pokemon-stats-item:hover {
+  cursor: default;
+  opacity: 0.65;
 }
 .pokemon-stats-item span {
-  background-color: greenyellow;
+  background-color: white;
+  color: black;
   padding: 0.6rem;
   border-radius: 0.75rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 1.125rem;
+  font-weight: 500;
 }
+.hp span {
+  background-color: #9b5de5;
+}
+
+.attack span {
+  background-color: #f15bb5;
+}
+
+.defense span {
+  background-color: #fee440;
+}
+
+.special-attack span {
+  background-color: #00bbf9;
+}
+
+.special-defense span {
+  background-color: #00f5d4;
+}
+
+.speed span {
+  background-color: #f79256;
+}
+
 .pokemon-weaknesses {
   display: flex;
   gap: 1rem;
   color: white;
 }
 .pokemon-weakness-item {
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  text-align: center;
-  background-color: #f2592b;
+  background-color: var(--vt-c-red);
 }
 
 .pokemon-not-found {

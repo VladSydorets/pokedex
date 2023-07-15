@@ -5,6 +5,13 @@ import { watchEffect } from 'vue'
 // import { useRoute } from 'vue-router'
 const pokemonsStore = usePokemonsStore()
 
+function showMorePokemons() {
+  if (pokemonsStore.pokemonsToShow >= pokemonsStore.pokemons.length) return
+  else {
+    pokemonsStore.pokemonsToShow = pokemonsStore.pokemonsToShow + 9
+  }
+}
+
 // const route = useRoute()
 
 const pokemons = ref(pokemonsStore.pokemons)
@@ -23,17 +30,38 @@ watchEffect(() => {
 <template>
   <section class="pokemon-list">
     <div
-      class="pokemon-list-card"
-      v-for="pokemon in pokemons"
+      :class="{
+        'pokemon-list-card pokemon-card-hover-right': true,
+        'pokemon-card-hover-left': Math.random() >= 0.5
+      }"
+      v-for="pokemon in pokemons.slice(0, pokemonsStore.pokemonsToShow)"
       :key="pokemon.id"
       @click="$router.push(`/pokemon/${pokemon.id}`)"
     >
-      <img src="@/assets/pokeball-logo.png" class="pokeball-img" alt="" />
+      <img src="@/assets/pokeball-logo.png" class="pokeball-img" alt="pokeball image" />
       <div class="pokemon-img">
-        <img :src="pokemon['image-url']" alt="" />
+        <img :src="pokemon['image-url']" alt="pokemon image card" width="128" height="128" />
       </div>
       <div class="pokemon-id">#{{ pokemon.id }}</div>
       <div class="pokemon-title">{{ pokemon.name }}</div>
+      <div class="pokemon-type">
+        <div
+          class="pokemon-type-item basic-pill"
+          v-for="pokemonType in pokemon.type"
+          :key="pokemonType"
+        >
+          {{ pokemonType }}
+        </div>
+      </div>
+    </div>
+    <div class="btn-wrapper" v-if="pokemons.length > 0">
+      <button
+        v-if="pokemonsStore.pokemonsToShow < pokemonsStore.pokemons.length"
+        @click="showMorePokemons"
+        class="show-more-btn"
+      >
+        Show more Pokémon
+      </button>
     </div>
   </section>
 </template>
@@ -77,8 +105,13 @@ watchEffect(() => {
   user-select: none; /* Standard syntax */
 }
 
-.pokemon-list-card:hover {
+.pokemon-card-hover-right:hover {
   transform: scale(1.03) rotate(3deg);
+  opacity: 0.8;
+}
+
+.pokemon-card-hover-left:hover {
+  transform: scale(1.03) rotate(-3deg);
   opacity: 0.8;
 }
 
@@ -87,5 +120,45 @@ watchEffect(() => {
   font-weight: 900;
   font-family: 'Tourney', cursive;
   color: black;
+}
+
+.btn-wrapper {
+  width: 300%;
+  display: flex;
+  justify-content: center;
+  grid-column: 1/2;
+}
+.show-more-btn {
+  background-color: var(--vt-c-yellow);
+  border: 1px solid var(--vt-c-red);
+  padding: 1rem 2.25rem;
+  font-size: 1.25rem;
+  font-family: 'Red Hat Mono';
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 2rem;
+  transition: all 0.4s ease-in;
+}
+
+.show-more-btn:hover {
+  background-color: transparent;
+  color: white;
+  border: 1px solid var(--vt-c-yellow);
+}
+
+.pokemon-type {
+  display: flex;
+  gap: 1rem;
+}
+
+.pokemon-type-item {
+  background-color: var(--vt-c-blue);
+  color: white;
+  margin-top: 0.625rem;
+}
+
+.pokemon-type-item:hover {
+  transform: none;
+  opacity: 1;
 }
 </style>

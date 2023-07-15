@@ -26,6 +26,7 @@ import pokemonsData from '@/assets/pokemon.json'
 export const usePokemonsStore = defineStore('pokemons', () => {
   const pokemons = ref(pokemonsData)
   const query = ref('')
+  const pokemonsToShow = ref(9)
 
   function findPokemon(id: number) {
     return pokemons.value.find((p) => p.id === id)
@@ -41,5 +42,17 @@ export const usePokemonsStore = defineStore('pokemons', () => {
     )
   }
 
-  return { pokemons, query, findPokemon, filterPokemons, getPokemons }
+  //   function randomizePokemons() {
+  //     return pokemons.value.sort((a, b) => 0.5 - Math.random())
+  //   }
+
+  return {
+    pokemons,
+    query,
+    pokemonsToShow,
+    findPokemon,
+    filterPokemons,
+    getPokemons
+    // randomizePokemons
+  }
 })

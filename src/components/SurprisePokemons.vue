@@ -1,13 +1,20 @@
 <script lang="ts">
 import { usePokemonsStore } from '@/stores/pokemons'
-// import { ref } from 'vue'
+// const pokemonsStore = usePokemonsStore()
 
-// const query = ref('')
+// function surpriseClick() {
+//     pokemonsStore.pokemons.so
+// }
+
 import { defineComponent } from 'vue'
 
 export default defineComponent({
   setup() {
     const pokemonsStore = usePokemonsStore()
+
+    // function surpriseClick() {
+    //   pokemonsStore.randomizePokemons()
+    // }
 
     return {
       pokemonsStore
@@ -17,13 +24,13 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="search-wrapper">
-    <input type="text" placeholder="Search for a Pokémon" v-model="pokemonsStore.query" />
+  <div class="surprise-button-wrapper">
+    <button @click="surpriseClick" class="surprise-btn">Surprise me!</button>
   </div>
 </template>
 
 <style scoped>
-.search-wrapper {
+.surprise-button-wrapper {
   width: 95%;
   background-color: white;
   padding: 2rem;
@@ -35,18 +42,20 @@ export default defineComponent({
   font-family: 'Red Hat Mono', monospace;
 }
 
-.search-wrapper input {
-  width: 80%;
-  padding: 0.5rem 1rem;
+.surprise-btn {
+  padding: 0.5rem 1.5rem;
   border-radius: 1rem;
   border: 1px solid #e33a27;
   font-size: 1rem;
   font-family: 'Red Hat Mono', monospace;
-  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.4s cubic-bezier(0.19, 0.98, 0.83, 0.67);
 }
 
-.search-wrapper input:focus {
-  outline: none;
-  border: 1px solid #cb3ae2;
+.surprise-btn:hover,
+.surprise-btn:focus {
+  background-color: #e33a27;
+  color: white;
 }
 </style>
