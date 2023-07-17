@@ -1,19 +1,7 @@
-<script lang="ts">
+<script setup lang="ts">
 import { usePokemonsStore } from '@/stores/pokemons'
-// import { ref } from 'vue'
 
-// const query = ref('')
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  setup() {
-    const pokemonsStore = usePokemonsStore()
-
-    return {
-      pokemonsStore
-    }
-  }
-})
+const pokemonsStore = usePokemonsStore()
 </script>
 
 <template>

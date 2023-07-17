@@ -28,6 +28,7 @@ header {
   border-radius: 1rem;
   padding: 0.75rem 2rem;
   margin-bottom: 2rem;
+  max-width: 75rem;
 }
 
 .logo {

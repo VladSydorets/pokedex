@@ -93,11 +93,12 @@ body::selection {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--vt-c-yellow);
+  border-radius: 0.625rem;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  opacity: 0.7;
+  background: #eedc76;
 }
 
 .basic-pill {

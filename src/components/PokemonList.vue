@@ -71,6 +71,7 @@ watchEffect(() => {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  max-width: 75rem;
 }
 
 .pokemon-img {
@@ -123,10 +124,9 @@ watchEffect(() => {
 }
 
 .btn-wrapper {
-  width: 300%;
   display: flex;
   justify-content: center;
-  grid-column: 1/2;
+  grid-column: 1/4;
 }
 .show-more-btn {
   background-color: var(--vt-c-yellow);
@@ -138,6 +138,7 @@ watchEffect(() => {
   cursor: pointer;
   border-radius: 2rem;
   transition: all 0.4s ease-in;
+  align-items: center;
 }
 
 .show-more-btn:hover {

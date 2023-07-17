@@ -42,9 +42,9 @@ export const usePokemonsStore = defineStore('pokemons', () => {
     )
   }
 
-  //   function randomizePokemons() {
-  //     return pokemons.value.sort((a, b) => 0.5 - Math.random())
-  //   }
+  function getRandomPokemon() {
+    return Math.floor(Math.random() * pokemons.value.length)
+  }
 
   return {
     pokemons,
@@ -52,7 +52,7 @@ export const usePokemonsStore = defineStore('pokemons', () => {
     pokemonsToShow,
     findPokemon,
     filterPokemons,
-    getPokemons
-    // randomizePokemons
+    getPokemons,
+    getRandomPokemon
   }
 })

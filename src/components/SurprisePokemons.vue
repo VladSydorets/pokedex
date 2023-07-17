@@ -1,31 +1,16 @@
-<script lang="ts">
+<script setup lang="ts">
 import { usePokemonsStore } from '@/stores/pokemons'
-// const pokemonsStore = usePokemonsStore()
-
-// function surpriseClick() {
-//     pokemonsStore.pokemons.so
-// }
-
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  setup() {
-    const pokemonsStore = usePokemonsStore()
-
-    // function surpriseClick() {
-    //   pokemonsStore.randomizePokemons()
-    // }
-
-    return {
-      pokemonsStore
-    }
-  }
-})
+const pokemonStore = usePokemonsStore()
 </script>
 
 <template>
   <div class="surprise-button-wrapper">
-    <button @click="surpriseClick" class="surprise-btn">Surprise me!</button>
+    <button
+      @click="$router.push(`/pokemon/${pokemonStore.getRandomPokemon()}`)"
+      class="surprise-btn"
+    >
+      Surprise me!
+    </button>
   </div>
 </template>
 

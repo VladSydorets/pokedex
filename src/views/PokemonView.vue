@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import pokemons from '../assets/pokemon.json'
 import { useRoute } from 'vue-router'
 import { ref, onBeforeMount } from 'vue'
 import { usePokemonsStore } from '@/stores/pokemons'
@@ -14,10 +13,6 @@ const { id } = route.params
 onBeforeMount(() => {
   pokemon.value = pokemonsStore.findPokemon(parseInt(id as string))
 })
-
-// function getRandomId() {
-//   return Math.floor(Math.random() * pokemons.length)
-// }
 </script>
 
 <template>
