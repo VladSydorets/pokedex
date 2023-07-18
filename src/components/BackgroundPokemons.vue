@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { usePokemonsStore } from '@/stores/pokemons'
-// import type Pokemon from '@/stores/pokemons'
+import type Pokemon from '@/stores/pokemons'
 
-// interface ImageObject {
-//   img: string
-//   name: string
-// }
+interface ImageObject {
+  img: string
+  name: string
+}
 
 const pokemonsStore = usePokemonsStore()
 
-function getPokemonImage() {
-  const randomPokemon = pokemonsStore.findPokemon(pokemonsStore.getRandomPokemon())
+function getPokemonImage(): ImageObject {
+  const randomPokemon: Pokemon = pokemonsStore.findPokemon(pokemonsStore.getRandomPokemon())
+  if (!randomPokemon) return { img: ' ', name: ' ' }
   return { img: randomPokemon['image-url'], name: randomPokemon.name }
 }
 </script>
