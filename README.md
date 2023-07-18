@@ -1,6 +1,15 @@
-# pokedex
+# Pokédex
+Pokédex web application built with Vue.js.
 
-This template should help get you started developing with Vue 3 in Vite.
+![pasted image 0](https://github.com/VladSydorets/pokedex/assets/39927384/4d722bed-388b-4020-9de5-5945b6d080d0)
+
+## Pokémon's page with all of the stats.
+
+![pasted image 0 (1)](https://github.com/VladSydorets/pokedex/assets/39927384/3c6cf0c1-f515-4f1f-abd0-a5ff63614b9f)
+
+## Technologies:
+- Vue.js -> Dependencies: pinia, vue-router, vite-svg-loader
+- Cypress
 
 ## Recommended IDE Setup
 
