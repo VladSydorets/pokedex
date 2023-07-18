@@ -1,11 +1,11 @@
 # Pokédex
 Pokédex web application built with Vue.js.
 
-![pasted image 0](https://github.com/VladSydorets/pokedex/assets/39927384/4d722bed-388b-4020-9de5-5945b6d080d0)
+![pokedex-jade-three vercel app_](https://github.com/VladSydorets/pokedex/assets/39927384/7bcbaa72-f02b-48d0-8dfa-ca08f0050f90)
 
 ## Pokémon's page with all of the stats.
 
-![pasted image 0 (1)](https://github.com/VladSydorets/pokedex/assets/39927384/3c6cf0c1-f515-4f1f-abd0-a5ff63614b9f)
+![pokedex-jade-three vercel app_ (1)](https://github.com/VladSydorets/pokedex/assets/39927384/e0b4e462-63b2-4714-8b88-fa0fd618e7cc)
 
 ## Technologies:
 - Vue.js -> Dependencies: pinia, vue-router, vite-svg-loader
