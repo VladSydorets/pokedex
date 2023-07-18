@@ -4,7 +4,13 @@ import Telegram from '@/assets/icons/telegram.svg?raw'
 import Linkedin from '@/assets/icons/linkedin.svg?raw'
 import Github from '@/assets/icons/github.svg?raw'
 
-const socialLinks = [
+interface SocialLink {
+  name: string
+  icon: string
+  link: string
+}
+
+const socialLinks: SocialLink[] = [
   {
     name: 'Mail',
     icon: Mail,
@@ -30,7 +36,10 @@ const socialLinks = [
 
 <template>
   <footer>
-    <div>Made with ❤️‍🔥</div>
+    <div class="p">
+      Made with
+      <a href="https://vuejs.org/" alt="vue.js website"> ❤️‍🔥</a>
+    </div>
     <div>
       © Vlad Sydorets | <span>{{ new Date().getFullYear() }}</span>
     </div>

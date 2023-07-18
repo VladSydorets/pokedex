@@ -1,3 +1,4 @@
+<!-- TODO: add filter functionality -->
 <!-- <script lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import pokemonsData from '@/assets/pokemon.json'

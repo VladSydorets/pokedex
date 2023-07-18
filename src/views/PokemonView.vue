@@ -1,52 +1,74 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import { ref, onBeforeMount } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { onMounted, ref, watch } from 'vue'
 import { usePokemonsStore } from '@/stores/pokemons'
+import PokemonNavigation from '@/components/PokemonNavigation.vue'
+
+import type { Ref } from 'vue'
+import type Pokemon from '@/stores/pokemons'
 
 const pokemonsStore = usePokemonsStore()
-
 const route = useRoute()
-const pokemon = ref()
+const router = useRouter()
 
-const { id } = route.params
+const id: Ref<number> = ref(Number(route.params.id))
+const pokemonForDisplay: Ref<Pokemon> = ref(pokemonsStore.findPokemon(id.value))
 
-onBeforeMount(() => {
-  pokemon.value = pokemonsStore.findPokemon(parseInt(id as string))
+function getPokemon(): void {
+  pokemonForDisplay.value = pokemonsStore.findPokemon(id.value)
+  window.scrollTo(0, 0)
+}
+
+watch(router.currentRoute, (to, _from) => {
+  id.value = Number(to.params.id)
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+  getPokemon()
+})
+
+onMounted(() => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 })
 </script>
 
 <template>
-  <div class="pokemon-item" v-if="pokemon">
+  <PokemonNavigation />
+  <div class="pokemon-item" v-if="pokemonForDisplay">
     <div class="pokemon-intro">
-      <img v-bind:src="pokemon['image-url']" v-bind:alt="pokemon.name" class="pokemon-image" />
-      <div class="pokemon-id">#{{ pokemon.id }}</div>
-      <h1 class="pokemon-name">{{ pokemon.name }}</h1>
+      <img
+        v-bind:src="pokemonForDisplay['image-url']"
+        v-bind:alt="pokemonForDisplay.name"
+        class="pokemon-image"
+        width="340"
+        height="340"
+      />
+      <div class="pokemon-id">#{{ pokemonForDisplay.id }}</div>
+      <h1 class="pokemon-name">{{ pokemonForDisplay.name }}</h1>
       <ul class="pokemon-type">
-        <li class="basic-pill" v-for="pokemonType in pokemon.type" :key="pokemonType">
+        <li class="basic-pill" v-for="pokemonType in pokemonForDisplay.type" :key="pokemonType">
           {{ pokemonType }}
         </li>
       </ul>
       <p class="pokemon-desc">
-        {{ pokemon.description }}
+        {{ pokemonForDisplay.description }}
       </p>
     </div>
     <h2>Basic Info</h2>
     <div class="pokemon-basics">
       <div class="pokemon-height pokemon-basics-item">
-        Height <span>{{ pokemon.height }}</span>
+        Height <span>{{ pokemonForDisplay.height }}</span>
       </div>
       <div class="pokemon-weight pokemon-basics-item">
-        Weight<span>{{ pokemon.weight }}</span>
+        Weight<span>{{ pokemonForDisplay.weight }}</span>
       </div>
       <div class="pokemon-category pokemon-basics-item">
-        Category<span>{{ pokemon.category }}</span>
+        Category<span>{{ pokemonForDisplay.category }}</span>
       </div>
     </div>
     <h2>Abilities</h2>
     <div class="pokemon-abilities">
       <div
         class="pokemon-ability basic-pill"
-        v-for="pokemonAbility in pokemon.abilities"
+        v-for="pokemonAbility in pokemonForDisplay.abilities"
         :key="pokemonAbility"
       >
         {{ pokemonAbility }}
@@ -56,7 +78,7 @@ onBeforeMount(() => {
     <div class="pokemon-weaknesses">
       <div
         class="pokemon-weakness-item basic-pill"
-        v-for="pokemonWeakness in pokemon.weaknesses"
+        v-for="pokemonWeakness in pokemonForDisplay.weaknesses"
         :key="pokemonWeakness"
       >
         {{ pokemonWeakness }}
@@ -64,20 +86,26 @@ onBeforeMount(() => {
     </div>
     <h2>Stats</h2>
     <div class="pokemon-stats">
-      <div class="pokemon-stats-item hp"><span>HP</span>{{ pokemon.stats.HP }}</div>
-      <div class="pokemon-stats-item attack"><span>ATK</span>{{ pokemon.stats.Attack }}</div>
-      <div class="pokemon-stats-item defense"><span>DEF</span>{{ pokemon.stats.Defense }}</div>
+      <div class="pokemon-stats-item hp"><span>HP</span>{{ pokemonForDisplay.stats.HP }}</div>
+      <div class="pokemon-stats-item attack">
+        <span>ATK</span>{{ pokemonForDisplay.stats.Attack }}
+      </div>
+      <div class="pokemon-stats-item defense">
+        <span>DEF</span>{{ pokemonForDisplay.stats.Defense }}
+      </div>
       <div class="pokemon-stats-item special-attack">
-        <span>SpA</span>{{ pokemon.stats['Special Attack'] }}
+        <span>SpA</span>{{ pokemonForDisplay.stats['Special Attack'] }}
       </div>
       <div class="pokemon-stats-item special-defense">
-        <span>SpD</span>{{ pokemon.stats['Special Defense'] }}
+        <span>SpD</span>{{ pokemonForDisplay.stats['Special Defense'] }}
       </div>
-      <div class="pokemon-stats-item speed"><span>SPD</span>{{ pokemon.stats.Speed }}</div>
+      <div class="pokemon-stats-item speed">
+        <span>SPD</span>{{ pokemonForDisplay.stats.Speed }}
+      </div>
     </div>
   </div>
   <div class="pokemon-not-found" v-else>
-    <img src="../assets/sad-pikachu.png" alt="not found image" width="500" />
+    <img src="../assets/sad-pikachu.png" alt="not found image" width="500" height="500" />
     <div class="pokemon-not-found-text">
       <p>Such Pokémon wasn't found :(</p>
       <p>Try something else...</p>

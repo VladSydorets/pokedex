@@ -1,4 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '@/views/HomeView.vue'
+import AboutView from '@/views/AboutView.vue'
+import PokemonView from '@/views/PokemonView.vue'
+import NotFound from '@/views/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -6,22 +10,22 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/HomeView.vue')
+      component: HomeView
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('@/views/AboutView.vue')
+      component: AboutView
     },
     {
       path: '/pokemon/:id',
       name: 'pokemon',
-      component: () => import('@/views/PokemonView.vue')
+      component: PokemonView
     },
     {
       path: '/:pathMatch(.*)*',
       name: 'notFound',
-      component: () => import('@/views/NotFound.vue')
+      component: NotFound
     }
   ]
 })

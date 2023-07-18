@@ -1,21 +1,20 @@
 <script setup lang="ts">
 import { usePokemonsStore } from '@/stores/pokemons'
-import { ref, watch } from 'vue'
+import { ref, type Ref } from 'vue'
 import { watchEffect } from 'vue'
-// import { useRoute } from 'vue-router'
+import type Pokemon from '@/stores/pokemons'
+
 const pokemonsStore = usePokemonsStore()
 
-function showMorePokemons() {
+function showMorePokemons(): void {
   if (pokemonsStore.pokemonsToShow >= pokemonsStore.pokemons.length) return
   else {
     pokemonsStore.pokemonsToShow = pokemonsStore.pokemonsToShow + 9
   }
 }
 
-// const route = useRoute()
-
-const pokemons = ref(pokemonsStore.pokemons)
-const filterQuery = ref(pokemonsStore.query)
+const pokemons: Ref<Pokemon[]> = ref(pokemonsStore.pokemons)
+const filterQuery: Ref<string> = ref(pokemonsStore.query)
 
 watchEffect(() => {
   filterQuery.value = filterQuery.value.toLowerCase().trim()
