@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePokemonsStore } from '@/stores/pokemons'
+
 const pokemonStore = usePokemonsStore()
 </script>
 
@@ -7,7 +8,7 @@ const pokemonStore = usePokemonsStore()
   <div class="surprise-button-wrapper">
     <button
       @click="$router.push(`/pokemon/${pokemonStore.getRandomPokemon()}`)"
-      class="surprise-btn"
+      class="surprise-btn style-btn"
     >
       Surprise me!
     </button>
@@ -25,22 +26,5 @@ const pokemonStore = usePokemonsStore()
   justify-content: center;
   align-items: center;
   font-family: 'Red Hat Mono', monospace;
-}
-
-.surprise-btn {
-  padding: 0.5rem 1.5rem;
-  border-radius: 1rem;
-  border: 1px solid #e33a27;
-  font-size: 1rem;
-  font-family: 'Red Hat Mono', monospace;
-  cursor: pointer;
-  background-color: transparent;
-  transition: all 0.4s cubic-bezier(0.19, 0.98, 0.83, 0.67);
-}
-
-.surprise-btn:hover,
-.surprise-btn:focus {
-  background-color: #e33a27;
-  color: white;
 }
 </style>

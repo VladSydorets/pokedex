@@ -118,3 +118,32 @@ body::selection {
   transform: scale(105%);
   opacity: 0.75;
 }
+
+.style-btn {
+  padding: 0.75rem 1.75rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 3px 0px black;
+  color: white;
+  font-family: 'Red Hat Mono', monospace;
+  cursor: pointer;
+  background-color: var(--vt-c-blue);
+  transition: all 0.4s cubic-bezier(0.19, 0.98, 0.83, 0.67);
+}
+
+.style-btn:hover {
+  background-color: var(--vt-c-yellow);
+  color: black;
+  translate: 0 -3px;
+  box-shadow: 0 6px 0 black;
+}
+
+.style-btn:active {
+  background-color: var(--vt-c-red);
+  transition: box-shadow 0s ease-in;
+  color: white;
+  box-shadow: 0 -3px 0;
+  translate: 0 3px;
+}

@@ -85,7 +85,7 @@ onMounted(() => {
       </div>
     </div>
     <h2>Stats</h2>
-    <div class="pokemon-stats">
+    <!-- <div class="pokemon-stats">
       <div class="pokemon-stats-item hp"><span>HP</span>{{ pokemonForDisplay.stats.HP }}</div>
       <div class="pokemon-stats-item attack">
         <span>ATK</span>{{ pokemonForDisplay.stats.Attack }}
@@ -101,6 +101,68 @@ onMounted(() => {
       </div>
       <div class="pokemon-stats-item speed">
         <span>SPD</span>{{ pokemonForDisplay.stats.Speed }}
+      </div>
+    </div> -->
+    <div class="pokemon-stats">
+      <div class="pokemon-stats-item hp">
+        <span>HP</span>
+        <div class="stats-bars">
+          <div
+            class="stats-bar"
+            v-for="index in pokemonForDisplay.stats.HP"
+            v-bind:key="index"
+          ></div>
+        </div>
+      </div>
+      <div class="pokemon-stats-item attack">
+        <span>ATK</span>
+        <div class="stats-bars">
+          <div
+            class="stats-bar"
+            v-for="index in pokemonForDisplay.stats.Attack"
+            v-bind:key="index"
+          ></div>
+        </div>
+      </div>
+      <div class="pokemon-stats-item defense">
+        <span>DEF</span>
+        <div class="stats-bars">
+          <div
+            class="stats-bar"
+            v-for="index in pokemonForDisplay.stats.Defense"
+            v-bind:key="index"
+          ></div>
+        </div>
+      </div>
+      <div class="pokemon-stats-item special-attack">
+        <span>SpA</span>
+        <div class="stats-bars">
+          <div
+            class="stats-bar"
+            v-for="index in pokemonForDisplay.stats['Special Attack']"
+            v-bind:key="index"
+          ></div>
+        </div>
+      </div>
+      <div class="pokemon-stats-item special-defense">
+        <span>SpD</span>
+        <div class="stats-bars">
+          <div
+            class="stats-bar"
+            v-for="index in pokemonForDisplay.stats['Special Defense']"
+            v-bind:key="index"
+          ></div>
+        </div>
+      </div>
+      <div class="pokemon-stats-item speed">
+        <span>SPD</span>
+        <div class="stats-bars">
+          <div
+            class="stats-bar"
+            v-for="index in pokemonForDisplay.stats.Speed"
+            v-bind:key="index"
+          ></div>
+        </div>
       </div>
     </div>
   </div>
@@ -204,15 +266,16 @@ h2 {
 .pokemon-stats-item {
   padding: 1rem 0.35rem;
   text-align: center;
-  background-color: #c2dfe3;
-  border: 1px solid black;
+  /* background-color: #c2dfe3;
+  border: 1px solid black; */
   border-radius: 0.5rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 0.5rem;
   font-size: 1.25rem;
   font-weight: 400;
   transition: all 0.3s ease-in-out;
+  justify-content: space-between;
 }
 .pokemon-stats-item:hover {
   cursor: default;
@@ -228,7 +291,7 @@ h2 {
   font-size: 1.125rem;
   font-weight: 500;
 }
-.hp span {
+/* .hp span {
   background-color: #9b5de5;
 }
 
@@ -250,7 +313,7 @@ h2 {
 
 .speed span {
   background-color: #f79256;
-}
+} */
 
 .pokemon-weaknesses {
   display: flex;
@@ -276,5 +339,18 @@ h2 {
   font-weight: 500;
   color: black;
   font-family: 'Red Hat Mono', monospace;
+}
+
+.stats-bars {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.stats-bar {
+  background-color: var(--vt-c-yellow);
+  width: 100%;
+  height: 1.5rem;
 }
 </style>

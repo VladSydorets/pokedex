@@ -12,8 +12,8 @@
       />
     </a>
     <nav>
-      <RouterLink active-class="active" to="/">Pokédex</RouterLink>
-      <RouterLink active-class="active" to="/about">About</RouterLink>
+      <RouterLink class="style-btn" active-class="active" to="/">Pokédex</RouterLink>
+      <RouterLink class="style-btn" active-class="active" to="/about">About</RouterLink>
     </nav>
   </header>
 </template>
@@ -64,11 +64,11 @@ nav a:hover {
   color: white;
 }
 
-nav a.router-link-exact-active:hover {
-  opacity: 0.7;
-  background-color: var(--vt-c-blue);
-  color: white;
-}
+/* nav a.router-link-exact-active:hover { */
+/* opacity: 0.7; */
+/* background-color: var(--vt-c-yellow); */
+/* color: black; */
+/* } */
 
 .logo-link {
   background-color: transparent;

@@ -33,11 +33,19 @@ function navigateToPrevPokemon(): void {
     class="nav-wrapper"
     :class="{ 'first-pokemon': currId === FIRST_POKEMON, 'last-pokemon': currId === LAST_POKEMON }"
   >
-    <button class="prev-btn nav-btn" v-if="currId > FIRST_POKEMON" @click="navigateToPrevPokemon">
+    <button
+      class="prev-btn nav-btn style-btn"
+      v-if="currId > FIRST_POKEMON"
+      @click="navigateToPrevPokemon"
+    >
       <div v-html="PrevIcon" class="svgIcon"></div>
       Previous Pokémon
     </button>
-    <button class="next-btn nav-btn" v-if="currId < LAST_POKEMON" @click="navigateToNextPokemon">
+    <button
+      class="next-btn nav-btn style-btn"
+      v-if="currId < LAST_POKEMON"
+      @click="navigateToNextPokemon"
+    >
       Next Pokémon
       <div v-html="NextIcon" class="svgIcon"></div>
     </button>

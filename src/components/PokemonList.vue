@@ -57,7 +57,7 @@ watchEffect(() => {
       <button
         v-if="pokemonsStore.pokemonsToShow < pokemonsStore.pokemons.length"
         @click="showMorePokemons"
-        class="show-more-btn"
+        class="show-more-btn style-btn"
       >
         Show more Pokémon
       </button>
@@ -99,6 +99,7 @@ watchEffect(() => {
   cursor: pointer;
   position: relative;
   transition: all 0.4s ease-in-out;
+  box-shadow: 3px 3px black;
 
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -108,11 +109,13 @@ watchEffect(() => {
 .pokemon-card-hover-right:hover {
   transform: scale(1.03) rotate(3deg);
   opacity: 0.8;
+  box-shadow: none;
 }
 
 .pokemon-card-hover-left:hover {
   transform: scale(1.03) rotate(-3deg);
   opacity: 0.8;
+  box-shadow: none;
 }
 
 .pokemon-title {
@@ -127,7 +130,7 @@ watchEffect(() => {
   justify-content: center;
   grid-column: 1/4;
 }
-.show-more-btn {
+/* .show-more-btn {
   background-color: var(--vt-c-yellow);
   border: 1px solid var(--vt-c-red);
   padding: 1rem 2.25rem;
@@ -144,6 +147,10 @@ watchEffect(() => {
   background-color: transparent;
   color: white;
   border: 1px solid var(--vt-c-yellow);
+} */
+
+.show-more-btn:active {
+  box-shadow: 0 3px 0 var(--vt-c-red);
 }
 
 .pokemon-type {
