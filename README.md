@@ -1,25 +1,6 @@
-# Pokédex
+# pokedex
 
-Pokédex web application built with Vue.js.
-
-![pokedex-jade-three vercel app_](https://github.com/VladSydorets/pokedex/assets/39927384/7bcbaa72-f02b-48d0-8dfa-ca08f0050f90)
-
-## Pokémon's page with all of the stats.
-
-![pokedex-jade-three vercel app_ (1)](https://github.com/VladSydorets/pokedex/assets/39927384/e0b4e462-63b2-4714-8b88-fa0fd618e7cc)
-
-## Technologies:
-
-- Vue.js -> Dependencies: pinia, vue-router, vite-svg-loader
-- Cypress
-
-## Front page
-
-![pokedex-jade-three vercel app_](https://github.com/VladSydorets/pokedex/assets/39927384/7bcbaa72-f02b-48d0-8dfa-ca08f0050f90)
-
-## Pokémon's page with all of the stats
-
-![pokedex-jade-three vercel app_ (1)](https://github.com/VladSydorets/pokedex/assets/39927384/e0b4e462-63b2-4714-8b88-fa0fd618e7cc)
+This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
 
