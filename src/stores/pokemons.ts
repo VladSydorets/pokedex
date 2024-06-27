@@ -28,6 +28,10 @@ export const usePokemonsStore = defineStore('pokemons', () => {
   const query = ref('')
   const pokemonsToShow = ref(9)
 
+  function defaultPokemonsToShow() {
+    pokemonsToShow.value = 9
+  }
+
   function findPokemon(id: number) {
     return <Pokemon>pokemons.value.find((p) => p.id === id)
   }
@@ -41,6 +45,7 @@ export const usePokemonsStore = defineStore('pokemons', () => {
   }
 
   function filterPokemons() {
+    defaultPokemonsToShow()
     return <Pokemon[]>(
       pokemons.value.filter(
         (pokemon) => pokemon.name.toLowerCase().indexOf(query.value.toLowerCase()) !== -1
@@ -49,6 +54,7 @@ export const usePokemonsStore = defineStore('pokemons', () => {
   }
 
   function getRandomPokemon() {
+    defaultPokemonsToShow()
     return <number>Math.floor(Math.random() * pokemons.value.length)
   }
 
