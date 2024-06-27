@@ -55,7 +55,7 @@ watchEffect(() => {
     </div>
     <div class="btn-wrapper" v-if="pokemons.length > 0">
       <button
-        v-if="pokemonsStore.pokemonsToShow < pokemonsStore.pokemons.length"
+        v-if="pokemonsStore.pokemonsToShow < pokemons.length"
         @click="showMorePokemons"
         class="show-more-btn style-btn"
       >
