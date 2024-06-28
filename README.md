@@ -12,7 +12,7 @@ Pokédex web application built with Vue.js.
 
 ## Pokémon's page with all of the stats
 
-![pokedex-jade-three vercel app_ (1)](https://github.com/VladSydorets/pokedex/assets/39927384/e0b4e462-63b2-4714-8b88-fa0fd618e7cc)
+![image](https://github.com/VladSydorets/pokedex/assets/39927384/4f005825-4675-4d8d-abb7-c8c208ce7be3)
 
 ## Recommended IDE Setup
 
