@@ -2,9 +2,13 @@
 import { useRoute, useRouter } from 'vue-router'
 import { onMounted, ref, watch } from 'vue'
 import { usePokemonsStore } from '@/stores/pokemons'
+
 import PokemonNavigation from '@/components/PokemonNavigation.vue'
+import StatsItem from '@/components/StatsItem.vue'
 
 import type { Ref } from 'vue'
+
+import { typeColors } from '@/types/pokemonTypesColors'
 import type Pokemon from '@/stores/pokemons'
 
 const pokemonsStore = usePokemonsStore()
@@ -44,7 +48,12 @@ onMounted(() => {
       <div class="pokemon-id">#{{ pokemonForDisplay.id }}</div>
       <h1 class="pokemon-name">{{ pokemonForDisplay.name }}</h1>
       <ul class="pokemon-type">
-        <li class="basic-pill" v-for="pokemonType in pokemonForDisplay.type" :key="pokemonType">
+        <li
+          class="basic-pill"
+          v-for="pokemonType in pokemonForDisplay.type"
+          :key="pokemonType"
+          :style="{ backgroundColor: typeColors[pokemonType] }"
+        >
           {{ pokemonType }}
         </li>
       </ul>
@@ -79,91 +88,20 @@ onMounted(() => {
       <div
         class="pokemon-weakness-item basic-pill"
         v-for="pokemonWeakness in pokemonForDisplay.weaknesses"
+        :style="{ backgroundColor: typeColors[pokemonWeakness] }"
         :key="pokemonWeakness"
       >
         {{ pokemonWeakness }}
       </div>
     </div>
     <h2>Stats</h2>
-    <!-- <div class="pokemon-stats">
-      <div class="pokemon-stats-item hp"><span>HP</span>{{ pokemonForDisplay.stats.HP }}</div>
-      <div class="pokemon-stats-item attack">
-        <span>ATK</span>{{ pokemonForDisplay.stats.Attack }}
-      </div>
-      <div class="pokemon-stats-item defense">
-        <span>DEF</span>{{ pokemonForDisplay.stats.Defense }}
-      </div>
-      <div class="pokemon-stats-item special-attack">
-        <span>SpA</span>{{ pokemonForDisplay.stats['Special Attack'] }}
-      </div>
-      <div class="pokemon-stats-item special-defense">
-        <span>SpD</span>{{ pokemonForDisplay.stats['Special Defense'] }}
-      </div>
-      <div class="pokemon-stats-item speed">
-        <span>SPD</span>{{ pokemonForDisplay.stats.Speed }}
-      </div>
-    </div> -->
     <div class="pokemon-stats">
-      <div class="pokemon-stats-item hp">
-        <span>HP</span>
-        <div class="stats-bars">
-          <div
-            class="stats-bar"
-            v-for="index in pokemonForDisplay.stats.HP"
-            v-bind:key="index"
-          ></div>
-        </div>
-      </div>
-      <div class="pokemon-stats-item attack">
-        <span>ATK</span>
-        <div class="stats-bars">
-          <div
-            class="stats-bar"
-            v-for="index in pokemonForDisplay.stats.Attack"
-            v-bind:key="index"
-          ></div>
-        </div>
-      </div>
-      <div class="pokemon-stats-item defense">
-        <span>DEF</span>
-        <div class="stats-bars">
-          <div
-            class="stats-bar"
-            v-for="index in pokemonForDisplay.stats.Defense"
-            v-bind:key="index"
-          ></div>
-        </div>
-      </div>
-      <div class="pokemon-stats-item special-attack">
-        <span>SpA</span>
-        <div class="stats-bars">
-          <div
-            class="stats-bar"
-            v-for="index in pokemonForDisplay.stats['Special Attack']"
-            v-bind:key="index"
-          ></div>
-        </div>
-      </div>
-      <div class="pokemon-stats-item special-defense">
-        <span>SpD</span>
-        <div class="stats-bars">
-          <div
-            class="stats-bar"
-            v-for="index in pokemonForDisplay.stats['Special Defense']"
-            v-bind:key="index"
-          ></div>
-        </div>
-      </div>
-      <div class="pokemon-stats-item speed">
-        <span>SPD</span>
-        <div class="stats-bars">
-          <div
-            class="stats-bar"
-            v-for="index in pokemonForDisplay.stats.Speed"
-            v-bind:key="index"
-          ></div>
-        </div>
-      </div>
+      <StatsItem
+        v-for="(value, key) in pokemonForDisplay.stats"
+        :key="key"
+        :stat-name="key"
+        :stat-value="value"
+      />
     </div>
   </div>
   <div class="pokemon-not-found" v-else>
@@ -261,60 +199,8 @@ h2 {
 }
 .pokemon-stats {
   display: flex;
-  gap: 1rem;
+  gap: 0.25rem;
 }
-.pokemon-stats-item {
-  padding: 1rem 0.35rem;
-  text-align: center;
-  /* background-color: #c2dfe3;
-  border: 1px solid black; */
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 0.5rem;
-  font-size: 1.25rem;
-  font-weight: 400;
-  transition: all 0.3s ease-in-out;
-  justify-content: space-between;
-}
-.pokemon-stats-item:hover {
-  cursor: default;
-  opacity: 0.65;
-}
-.pokemon-stats-item span {
-  background-color: white;
-  color: black;
-  padding: 0.6rem;
-  border-radius: 0.75rem;
-  width: 3.25rem;
-  height: 3.25rem;
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-/* .hp span {
-  background-color: #9b5de5;
-}
-
-.attack span {
-  background-color: #f15bb5;
-}
-
-.defense span {
-  background-color: #fee440;
-}
-
-.special-attack span {
-  background-color: #00bbf9;
-}
-
-.special-defense span {
-  background-color: #00f5d4;
-}
-
-.speed span {
-  background-color: #f79256;
-} */
-
 .pokemon-weaknesses {
   display: flex;
   gap: 1rem;
@@ -339,18 +225,5 @@ h2 {
   font-weight: 500;
   color: black;
   font-family: 'Red Hat Mono', monospace;
-}
-
-.stats-bars {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: flex-end;
-}
-
-.stats-bar {
-  background-color: var(--vt-c-yellow);
-  width: 100%;
-  height: 1.5rem;
 }
 </style>
