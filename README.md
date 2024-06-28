@@ -5,7 +5,6 @@ Pokédex web application built with Vue.js.
 ## Technologies:
 
 - Vue.js -> Dependencies: pinia, vue-router, vite-svg-loader
-- Cypress
 
 ## Front page
 
