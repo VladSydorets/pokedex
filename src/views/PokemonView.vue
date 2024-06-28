@@ -139,7 +139,15 @@ h2 {
 }
 
 .pokemon-image {
-  width: 30%;
+  width: 80%;
+  height: 80%;
+}
+
+@media (min-width: 600px) {
+  .pokemon-image {
+    width: 30%;
+    height: 30%;
+  }
 }
 
 .pokemon-intro {
@@ -162,17 +170,22 @@ h2 {
   margin-top: 1rem;
   font-family: 'Tourney', cursive;
   font-weight: 200;
+  word-break: break-word;
   color: var(--vt-c-red);
 }
 
 .pokemon-type {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   list-style-type: none;
   gap: 0.5rem;
   padding-left: 0;
 }
 .pokemon-abilities {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 .pokemon-ability {
@@ -181,6 +194,8 @@ h2 {
 
 .pokemon-basics {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 1.5rem;
 }
 
@@ -198,11 +213,21 @@ h2 {
   color: white;
 }
 .pokemon-stats {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.25rem;
+}
+@media (min-width: 600px) {
+  .pokemon-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 .pokemon-weaknesses {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   color: white;
 }

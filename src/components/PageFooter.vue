@@ -70,6 +70,7 @@ footer {
   padding: 2rem 0;
   margin-top: 3rem;
   border-radius: 1rem;
+  z-index: 1;
 }
 
 footer div,

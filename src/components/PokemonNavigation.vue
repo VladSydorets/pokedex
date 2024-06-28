@@ -57,7 +57,6 @@ function navigateToPrevPokemon(): void {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   background-color: white;
   border-radius: 1rem;
   margin-bottom: 2rem;
@@ -82,8 +81,14 @@ function navigateToPrevPokemon(): void {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   transition: all 0.25s ease-in;
+}
+
+@media (min-width: 600px) {
+  .nav-btn {
+    font-size: 1.75rem;
+  }
 }
 
 .prev-btn {

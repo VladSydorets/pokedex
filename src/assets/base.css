@@ -133,6 +133,16 @@ body::selection {
   transition: all 0.4s cubic-bezier(0.19, 0.98, 0.83, 0.67);
 }
 
+nav .style-btn {
+  padding: 0.25rem 1.5rem;
+}
+
+@media (min-width: 600px) {
+  nav .style-btn {
+    padding: 0.75rem 1.75rem;
+  }
+}
+
 .style-btn:hover {
   background-color: var(--vt-c-yellow);
   color: black;
