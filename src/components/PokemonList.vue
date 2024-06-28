@@ -39,7 +39,7 @@ watchEffect(() => {
     >
       <img src="@/assets/pokeball-logo.png" class="pokeball-img" alt="pokeball image" />
       <div class="pokemon-img">
-        <img :src="pokemon['image-url']" alt="pokemon image card" width="128" height="128" />
+        <img v-lazy="pokemon['image-url']" alt="pokemon image card" width="128" height="128" />
       </div>
       <div class="pokemon-id">#{{ pokemon.id }}</div>
       <div class="pokemon-title">{{ pokemon.name }}</div>
