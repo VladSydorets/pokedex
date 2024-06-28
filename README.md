@@ -8,7 +8,7 @@ Pokédex web application built with Vue.js.
 
 ## Front page
 
-![pokedex-jade-three vercel app_](https://github.com/VladSydorets/pokedex/assets/39927384/7bcbaa72-f02b-48d0-8dfa-ca08f0050f90)
+![image](https://github.com/VladSydorets/pokedex/assets/39927384/66980a50-78c3-48a9-8823-4f5a99647364)
 
 ## Pokémon's page with all of the stats
 
