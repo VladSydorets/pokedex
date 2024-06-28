@@ -14,13 +14,19 @@ const pokemonsStore = usePokemonsStore()
 .search-wrapper {
   width: 95%;
   background-color: white;
-  padding: 2rem;
+  padding: 2rem 0.25rem;
   margin-bottom: 1rem;
   border-radius: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Red Hat Mono', monospace;
+}
+
+@media (min-width: 600px) {
+  .search-wrapper {
+    padding: 2rem;
+  }
 }
 
 .search-wrapper input {

@@ -22,7 +22,7 @@
 header {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
   max-height: 100vh;
   background-color: white;
   border-radius: 1rem;
@@ -31,8 +31,28 @@ header {
   max-width: 75rem;
 }
 
+@media (min-width: 600px) {
+  header {
+    gap: 2rem;
+    justify-content: unset;
+  }
+  nav {
+    gap: 1rem;
+  }
+}
+
 .logo {
   display: block;
+  width: 3rem;
+  height: 3rem;
+  margin-right: 0.625rem;
+}
+
+@media (min-width: 600px) {
+  .logo {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
 }
 
 nav {
@@ -40,7 +60,7 @@ nav {
   text-align: center;
   display: flex;
   justify-content: left;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 nav a {
@@ -55,20 +75,12 @@ nav a {
 nav a.router-link-exact-active {
   color: white;
   background-color: var(--vt-c-red);
-  /* font-weight: 700; */
-  /* border-radius: 2rem; */
 }
 
 nav a:hover {
   background-color: var(--vt-c-blue);
   color: white;
 }
-
-/* nav a.router-link-exact-active:hover { */
-/* opacity: 0.7; */
-/* background-color: var(--vt-c-yellow); */
-/* color: black; */
-/* } */
 
 .logo-link {
   background-color: transparent;

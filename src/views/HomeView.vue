@@ -17,9 +17,17 @@ import SurprisePokemons from '@/components/SurprisePokemons.vue'
 
 <style scoped>
 .bar {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  .bar {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    gap: 1rem;
+    place-items: center;
+  }
 }
 </style>

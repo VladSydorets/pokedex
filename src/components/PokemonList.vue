@@ -68,9 +68,20 @@ watchEffect(() => {
 <style scoped>
 .pokemon-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   max-width: 75rem;
+}
+
+@media (min-width: 600px) {
+  .pokemon-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1044px) {
+  .pokemon-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .pokemon-img {
@@ -128,26 +139,19 @@ watchEffect(() => {
 .btn-wrapper {
   display: flex;
   justify-content: center;
-  grid-column: 1/4;
-}
-/* .show-more-btn {
-  background-color: var(--vt-c-yellow);
-  border: 1px solid var(--vt-c-red);
-  padding: 1rem 2.25rem;
-  font-size: 1.25rem;
-  font-family: 'Red Hat Mono';
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 2rem;
-  transition: all 0.4s ease-in;
-  align-items: center;
 }
 
-.show-more-btn:hover {
-  background-color: transparent;
-  color: white;
-  border: 1px solid var(--vt-c-yellow);
-} */
+@media (min-width: 600px) {
+  .btn-wrapper {
+    grid-column: 1/3;
+  }
+}
+
+@media (min-width: 1044px) {
+  .btn-wrapper {
+    grid-column: 1/4;
+  }
+}
 
 .show-more-btn:active {
   box-shadow: 0 3px 0 var(--vt-c-red);
